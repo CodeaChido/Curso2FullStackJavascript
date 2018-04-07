@@ -1,0 +1,43 @@
+#Abrir terminal (windows)
+win+r
+ -> cmd
+
+## Comando node
+version node -> node -v
+version npm -> npm -v
+
+### instalar dependencia npm
+ -> npm install <nombre-dependencia>
+### instalar dependencia global npm
+ -> npm install -g <nombre-dependencia>
+### crear proyecto de node usando express 
+ -> npm install -g express-generator
+ -> express <nombre-proyecto> (no usar)
+ -> express --view=pug <nombre-proyecto>
+
+### correr proyecto
+  ## instalar dependencias
+   -> npm install
+
+ (windows) -> set DEBUG=curso:* & npm start
+ (unix) -> DEBUG=curso:* npm start
+
+## Comando git
+### Iniciar repositorio de git
+  -> git init
+### Añadir url remota del proyecto (Sacar url de github)
+ -> git remote add origin <url>
+### Añadir cambios
+ -> git add -A (añadir todo)
+ -> git add <nombre-archivo> (añadir un solo archivo)
+### Agregar comentario a cambios
+ -> git commit -m "<comentario>"
+
+### Subir cambios al repositorio remoto (nube)
+  -> git push origin master
+
+## Bower
+### Iniciar bower
+  -> bower init
+### Instalar dependencia
+  -> bower install <nombre-dependencia>
