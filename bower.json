@@ -1,0 +1,21 @@
+{
+  "name": "curso",
+  "description": "Curso node",
+  "main": "app.js",
+  "authors": [
+    "alexvanhell <alejandrodnl.cv@hotmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/AlexVanHell/curso-node",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
