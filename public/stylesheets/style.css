@@ -25,3 +25,56 @@ body {
   padding-top: 80px;
   padding-bottom: 48px;
 }
+
+.carousel-container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+
+.carousel-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  white-space: nowrap;
+}
+
+.carousel-item {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  background-image: url('https://images.unsplash.com/photo-1516295904088-1ff1398c9596?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b61b1204cfaf9c7b6917e3968ec2c24f&auto=format&fit=crop&w=1189&q=80');
+  /* background-attachment: fixed; */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.carousel-item .carousel-background {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.carousel-container .carousel-indicators {
+  position: absolute;
+  bottom: 24px;
+}
+
+.carousel-indicators .indicator {
+  display: inline-block;
+  margin: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+.carousel-indicators .indicator.active {
+  background-color: #fff;
+}
