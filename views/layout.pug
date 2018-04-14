@@ -1,7 +1,44 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+	head
+		title= title
+		link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.min.css")
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-dark
+			a.navbar-brand(href='#')
+				img.d-inline-block.align-top(src='https://getbootstrap.com/assets/brand/bootstrap-solid.svg', width='30', height='30', alt='')
+				|    Tienda
+			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+				span.navbar-toggler-icon
+			#navbarSupportedContent.collapse.navbar-collapse
+				ul.navbar-nav.mr-auto
+					li.nav-item.active
+						a.nav-link(href='#')
+							| Inicio
+							span.sr-only (current)
+					li.nav-item
+						a.nav-link(href='#') Iniciar sesion
+					li.nav-item
+						a.nav-link(href='#') Registrarse
+					li.nav-item.dropdown
+						a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+							| Perfil
+						.dropdown-menu(aria-labelledby='navbarDropdown')
+							h6.dropdown-header Cuenta
+							a.dropdown-item(href='#') Mi cuenta
+							a.dropdown-item(href='#')
+								| Carrito  
+								span.badge.badge-pill.badge-info 9
+							.dropdown-divider
+							a.dropdown-item(href='#') Historial
+							a.dropdown-item.bg-danger.text-light(href='#') Cerrar sesión
+				form.form-inline.my-2.my-lg-0
+					input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
+					button.btn.btn-outline-light.my-2.my-sm-0(type='submit') Search
+			
+		block content
+
+		script(src="/bower_components/jquery/dist/jquery.min.js")
+		script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
+		script(src="/javascripts/index.js")
