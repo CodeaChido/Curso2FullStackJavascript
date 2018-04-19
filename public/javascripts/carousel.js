@@ -54,7 +54,7 @@ Carousel.prototype.next = function () {
     const slider = this.element.find('.carousel-slider');
     const length = this.element.find('.carousel-item').length - 1;
 
-    console.log(length);
+    //console.log(length);
 
     this.currentImg++;
 
