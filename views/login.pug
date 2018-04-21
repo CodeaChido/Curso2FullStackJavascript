@@ -1,0 +1,28 @@
+extends layout_no_session
+
+block content
+    .login-container
+        .login-form
+            form(action='/api/login', method='post')
+                h2.text-center.pb-3.mb-3 Iniciar Sesión
+                .alert.alert-danger(role='alert')
+                    | Usuario y o contraseña incorrectos
+                .input-group.mb-3
+                    .input-group-prepend
+                        span#login-user.input-group-text @
+                    input.form-control(type='text', placeholder='Usuario', aria-label='Usuario', aria-describedby='login-user', required='required', name='email')
+                .input-group.mb-3
+                    .input-group-prepend
+                        span#login-psw.input-group-text **
+                    input.form-control(type='password', placeholder='Contraseña', aria-label='Contraseña', aria-describedby='login-psw', required='required', name='contra')
+                .form-group
+                    button.btn.btn-primary.btn-block(type='submit') Iniciar
+                .clearfix
+                    .row
+                        .col-sm-4.form-check
+                            input#remember.form-check-input(type='checkbox')
+                            label.form-check-label(for='remember') Recuerdame
+                        .col-sm-8.text-right
+                            a(href='#') ¿Olvidaste tu contraseña?
+            p.text-center
+                a(href='#') Registrarse
