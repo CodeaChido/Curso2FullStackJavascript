@@ -7,6 +7,8 @@ const usuario = {nombre: 'Diego Martinez', email: 'diegojmartinezzm@gmail.com', 
 router.route('/')
       .get(function(req, res, next){
         respuesta.metodo = 'GET';
+        //res.json responde en formato json
+        //res.send responde en el formato de objeto
         res.json(respuesta);
       })
       .post(function(req, res, next){
@@ -25,11 +27,13 @@ router.route('/')
 
 router.route('/login')
       .post(function(req, res, next){
-        var body = req.body;
+        var body = req.body;//req.body obtiene la informacion de la peticion
         if (body.email === usuario.email && body.contra === usuario.contra) {
+            //guardamos la informacion en la cookie
             req.session.usuario = body;
             res.json('Sesion iniciada');
         } else {
+            //eliminamos la cookie
             req.session.usuario = null;
             res.json('Datos de login incorrectos');
         }
