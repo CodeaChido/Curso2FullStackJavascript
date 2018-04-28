@@ -1,10 +1,13 @@
+//van dependencias
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var galleta = require('cookie-session');
+var mongoose = require('mongoose');
 
+//se jalan rutas y archivos
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var apiRouter = require('./routes/api');
@@ -18,12 +21,20 @@ app.set('view engine', 'pug');
 app.use(galleta({
 	secret: 'Supercalifragilisticoespiralindoso',
 	name: 'galleta'
-}))
+}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+mongoose.connect('mongodb://localhost/carrito', function(error){
+	if(error){
+		throw error;
+	}else{
+		console.log('Estas conectado a la base de datos no relacional mas famosa');
+	}
+});
 
 function validateSession(req, res, next) {
 	if(req.session.usuario) {
