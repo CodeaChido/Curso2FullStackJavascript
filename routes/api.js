@@ -40,6 +40,10 @@ router.route('/login')
         res.json('Datos de login incorrectos');
     }*/
     controlador_ejemplo.login(req, res, next);
+  })
+  .delete(function (req, res, next){
+    req.session.usuario = undefined;
+    res.json('Sesion cerrada');
   });
 
 router.route('/users')

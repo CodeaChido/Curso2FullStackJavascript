@@ -11,3 +11,11 @@ block content
     br
     br
     h1 Bienvenido Usuario #{user.email}
+    .carrito-container( ng-controller="carrito", ng-init="obten_productos()" )
+        ol
+            li(ng-repeat="producto in productos") 
+                h1 {{producto.nombre}}
+                h2 {{producto.precio}}
+                img(src="{{producto.imagen}}")
+
+    script(src="/javascripts/logicaFront/carrito.js")
