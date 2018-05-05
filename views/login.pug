@@ -1,20 +1,21 @@
 extends layout_no_session
 
 block content
-    .login-container
+    script( src="/javascripts/logicaFront/login.js" )
+    .login-container( ng-controller="login" )
         .login-form
-            form(action='/api/login', method='post')
-                h2.text-center.pb-3.mb-3 Iniciar Sesión
+            form(ng-submit="loguea()")
+                h2.text-center.pb-3.mb-3 Inicia sesion
                 .alert.alert-danger(role='alert')
                     | Usuario y o contraseña incorrectos
                 .input-group.mb-3
                     .input-group-prepend
                         span#login-user.input-group-text @
-                    input.form-control(type='text', placeholder='Usuario', aria-label='Usuario', aria-describedby='login-user', required='required', name='email')
+                    input.form-control(type='text', placeholder='Usuario', aria-label='Usuario', aria-describedby='login-user', required='required', name='email', ng-model="email")
                 .input-group.mb-3
                     .input-group-prepend
                         span#login-psw.input-group-text **
-                    input.form-control(type='password', placeholder='Contraseña', aria-label='Contraseña', aria-describedby='login-psw', required='required', name='contra')
+                    input.form-control(type='password', placeholder='Contraseña', aria-label='Contraseña', aria-describedby='login-psw', required='required', name='contra', ng-model="password")
                 .form-group
                     button.btn.btn-primary.btn-block(type='submit') Iniciar
                 .clearfix

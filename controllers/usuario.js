@@ -4,7 +4,7 @@ var controlador = {};
 controlador.login = function (req, res, next) {
     Usuario.find({ email: req.body.email, password: req.body.password }, function (error, resultados) {
         if (error || resultados.length < 1) {
-            res.json(error || 'Datos de sesion incorrectos');
+            res.status(401).send(error || 'Datos de sesion incorrectos');
         } else {
             req.session.usuario = resultados;
             res.json(resultados);
