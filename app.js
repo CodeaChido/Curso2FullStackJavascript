@@ -37,15 +37,16 @@ mongoose.connect('mongodb://localhost/carrito', function(error){
 });
 
 function validateSession(req, res, next) {
+	console.log(req.session.usuario)
 	if(req.session.usuario) {
 		next();
 	}else {
-		res.redirect('/inicio');
+		res.redirect('/');
 	}
 }
 
-app.use('/', indexRouter);
-app.use('/users', validateSession, usersRouter);
+app.use('/', indexRouter);//usuarios sin sesion
+app.use('/users', validateSession, usersRouter);//ususarios con sesion
 app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler

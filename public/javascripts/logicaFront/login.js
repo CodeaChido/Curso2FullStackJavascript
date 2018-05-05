@@ -16,9 +16,10 @@ app.controller("login", function($scope, $http){
             function sucess(data) {
                 console.log(data);
                 console.log('Login correcto');
+                window.location.href = "/inicio";
             },
             function error(err) {
-                console.log('Login incorrecto');
+                alert('Login incorrecto');
             }
         )
     }

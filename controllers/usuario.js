@@ -6,7 +6,8 @@ controlador.login = function (req, res, next) {
         if (error || resultados.length < 1) {
             res.status(401).send(error || 'Datos de sesion incorrectos');
         } else {
-            req.session.usuario = resultados;
+            req.session.usuario = resultados[0];
+            console.log(req.session.usuario);
             res.json(resultados);
         }
     })
@@ -29,6 +30,7 @@ controlador.registro = function (req, res, next) {
             if (error) {
                 res.json(error);
             } else {
+                req.session.usuario = respuesta;
                 res.json(respuesta);
             }
         })
