@@ -41,7 +41,7 @@ router.route('/login')
     }*/
     controlador_ejemplo.login(req, res, next);
   })
-  .delete(function (req, res, next){
+  .delete(function (req, res, next) {
     req.session.usuario = undefined;
     res.json('Sesion cerrada');
   });
@@ -70,5 +70,13 @@ router.route('/producto')
   .delete(function (req, res, next) {
     controlador_producto.eliminar(req, res, next);
   });
-  
+
+router.route('/carrito')
+  .get(function (req, res, next) {
+    controlador_producto.getCarrito(req, res, next);
+  })
+  .post(function (req, res, next) {
+    controlador_producto.aniadeCarrito(req, res, next);
+  });
+
 module.exports = router;

@@ -15,7 +15,10 @@ block content
         ol
             li(ng-repeat="producto in productos") 
                 h1 {{producto.nombre}}
-                h2 {{producto.precio}}
-                img(src="{{producto.imagen}}")
+                h2 $ {{producto.precio}}
+                h3 Stock: {{producto.cantidad-producto.compra}}
+                input(type="number", min="0", max="{{producto.cantidad}}", ng-model="producto.compra")
+                button(ng-click="aniadir(producto)") Añadir a carrito
+                img(src="{{producto.imagen}}", height="200px")
 
     script(src="/javascripts/logicaFront/carrito.js")

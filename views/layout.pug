@@ -7,7 +7,7 @@ html
 	body( ng-app="aplicacion" )
 		script(src="/bower_components/angular/angular.min.js")
 		script(src="/javascripts/logicaFront/barra.js")
-		nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-dark(ng-controller="barra")
+		nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-dark(ng-controller="barra", ng-init="getCarrito()")
 			a.navbar-brand(href='#')
 				img.d-inline-block.align-top(src='https://getbootstrap.com/assets/brand/bootstrap-solid.svg', width='30', height='30', alt='')
 				|    Tienda
@@ -31,7 +31,7 @@ html
 							a.dropdown-item(href='#') Mi cuenta
 							a.dropdown-item(href='#')
 								| Carrito  
-								span.badge.badge-pill.badge-info 9
+								span.badge.badge-pill.badge-info {{carrito.length}}
 							.dropdown-divider
 							a.dropdown-item(href='#') Historial
 							a.dropdown-item.bg-danger.text-light(href='#', ng-click="cerrar_sesion()") Cerrar sesión

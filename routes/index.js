@@ -1,39 +1,28 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-
-router.get('/', function (req, res, next) {
-  if(!req.session.usuario) {
-		res.render('index', { title: 'Express' });
-	}else {
+function validateNoSession(req, res, next) {
+	if (!req.session.usuario) {
+		next();
+	} else {
 		res.redirect('/users');
 	}
+}
+
+router.get('/', validateNoSession, function (req, res, next) {
+	res.render('index', { title: 'Express' });
 });
 
-router.get('/inicio', function (req, res, next) {
-  // Cargar vista inicio.pug
-  if(!req.session.usuario) {
-		res.render('inicio', { title: 'Hola mundo', variable: 'Soy una variable xD <b>nigga</b>' });
-	}else {
-		res.redirect('/users');
-	}
+router.get('/inicio', validateNoSession, function (req, res, next) {
+	res.render('inicio', { title: 'Hola mundo', variable: 'Soy una variable xD <b>nigga</b>' });
 });
 
-router.get('/login', function (req, res, next) {
-  if(!req.session.usuario) {
-		res.render('login', { title: 'Login' });
-	}else {
-		res.redirect('/users');
-	}
+router.get('/login', validateNoSession, function (req, res, next) {
+	res.render('login', { title: 'Login' });
 });
 
-router.get('/registro', function (req, res, next) {
-  if(!req.session.usuario) {
-		res.render('registro', { title: 'Registrate' });
-	}else {
-		res.redirect('/users');
-	}
+router.get('/registro', validateNoSession, function (req, res, next) {
+	res.render('registro', { title: 'Registrate' });
 });
 
 module.exports = router;

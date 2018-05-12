@@ -55,4 +55,19 @@ controlador.eliminar = function (req, res, next) {
     })
 }
 
+controlador.aniadeCarrito = function (req, res, next) {
+    if (req.session.carrito) {
+        req.session.carrito.push(req.body.producto);    
+    } else {
+        req.session.carrito = [];
+        req.session.carrito.push(req.body.producto);    
+    }
+    console.log(req.session.carrito);
+    res.json('Todo shido');
+}
+
+controlador.getCarrito = function (req, res, next) {
+    res.json(req.session.carrito);
+}
+
 module.exports = controlador;

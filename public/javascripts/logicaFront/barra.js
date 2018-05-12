@@ -1,6 +1,8 @@
 var app = angular.module("aplicacion", []);
 
-app.controller("barra", function($scope, $http){
+app.controller("barra", function($scope, $http, $rootScope){
+
+    $rootScope.carrito = [];
 
     $scope.cerrar_sesion = function() {
         $http({
@@ -14,6 +16,21 @@ app.controller("barra", function($scope, $http){
             },
             function error(err) {
                 alert('Sesion cerrada incorrectamente');
+            }
+        )
+    }
+
+    $scope.getCarrito = function() {
+        $http({
+            method: 'GET',
+            url: 'http://localhost:3000/api/carrito'
+        }).then(
+            function sucess(data) {
+                console.log(data);
+                $rootScope.carrito = data.data;
+            },
+            function error(err) {
+                alert('Error');
             }
         )
     }
