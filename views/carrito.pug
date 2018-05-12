@@ -1,0 +1,23 @@
+extends layout
+
+block content
+
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    .carrito-container( ng-controller="compras" )
+        ol
+            li(ng-repeat="producto in carrito") 
+                h1 {{producto.nombre}}
+                h2 $ {{producto.precio}}
+                h3 Cantidad: {{producto.compra}}
+                button(ng-click="eliminar(producto)") X
+                img(src="{{producto.imagen}}", height="200px")
+        button(ng-click="comprar()") Comprar
+
+    script(src="/javascripts/logicaFront/compras.js")

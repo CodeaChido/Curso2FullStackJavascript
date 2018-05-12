@@ -1,4 +1,5 @@
 var Producto = require('../models/Producto');
+var Usuario = require('../models/Usuario');
 var controlador = {};
 
 controlador.obtener = function (req, res, next) {
@@ -57,10 +58,10 @@ controlador.eliminar = function (req, res, next) {
 
 controlador.aniadeCarrito = function (req, res, next) {
     if (req.session.carrito) {
-        req.session.carrito.push(req.body.producto);    
+        req.session.carrito.push(req.body.producto);
     } else {
         req.session.carrito = [];
-        req.session.carrito.push(req.body.producto);    
+        req.session.carrito.push(req.body.producto);
     }
     console.log(req.session.carrito);
     res.json('Todo shido');
@@ -68,6 +69,32 @@ controlador.aniadeCarrito = function (req, res, next) {
 
 controlador.getCarrito = function (req, res, next) {
     res.json(req.session.carrito);
+}
+
+controlador.removeCarrito = function (req, res, next) {
+    req.session.carrito = req.query.carrito;
+    res.json(req.session.carrito);
+}
+
+controlador.shop = function (req, res, next) {
+    console.log(req.body.carrito);
+    Usuario.update(
+        { 
+        
+            _id: req.session.usuario._id 
+        },
+        {
+            $push: {'compras': req.body.carrito}
+        },
+        function (error, respuesta) {
+            if (error) {
+                res.status(500).send(error);
+            } else {
+                req.session.carrito = [];
+                res.json(respuesta);
+            }
+        }
+    )
 }
 
 module.exports = controlador;

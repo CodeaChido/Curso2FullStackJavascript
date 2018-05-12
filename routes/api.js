@@ -77,6 +77,14 @@ router.route('/carrito')
   })
   .post(function (req, res, next) {
     controlador_producto.aniadeCarrito(req, res, next);
+  })
+  .delete(function (req, res, next) {
+    controlador_producto.removeCarrito(req, res, next);
+  });
+
+router.route('/compra')
+  .post(function (req, res, next) {
+    controlador_producto.shop(req, res, next);
   });
 
 module.exports = router;
